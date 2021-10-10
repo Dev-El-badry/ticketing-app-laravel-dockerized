@@ -1,0 +1,56 @@
+<div class="show-times">
+<h1>Show times </h1>
+  <div class="show-times__table" *ngIf="dataSource.data.length && !(isLoading$ | async)">
+    <mat-table [dataSource]="dataSource" class="box__content-table" >
+       
+        <ng-container matColumnDef="hall">
+            <mat-header-cell *matHeaderCellDef >Hall</mat-header-cell>
+            <mat-cell *matCellDef="let element">{{ element.hall.hall_name }}</mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="date">
+          <mat-header-cell *matHeaderCellDef >Show Date</mat-header-cell>
+          <mat-cell *matCellDef="let element">{{ element.date | date: 'dd/MM/yyyy' }}</mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="start_time">
+          <mat-header-cell *matHeaderCellDef >Start time</mat-header-cell>
+          <mat-cell *matCellDef="let element">{{ element.start_time }}</mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="end_time">
+          <mat-header-cell *matHeaderCellDef >End time</mat-header-cell>
+          <mat-cell *matCellDef="let element">{{ element.end_time }}</mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="price">
+          <mat-header-cell *matHeaderCellDef >Price</mat-header-cell>
+          <mat-cell *matCellDef="let element">$ {{ element.hall.price }}</mat-cell>
+        </ng-container>
+       
+        <ng-container matColumnDef="actions">
+            <mat-header-cell *matHeaderCellDef>Actions</mat-header-cell>
+            <mat-cell *matCellDef="let element">
+                <section class="buttons">
+                    <div class="buttons__row" fxLayout="row" fxFlexAlign="center center" fxLayoutGap="10px">
+                        <button mat-flat-button color="primary" [routerLink]="['/', 'show-seats', element.hall.id, 'show', element.id]">
+                          reservation
+                        </button>
+                    </div>
+                </section>
+            </mat-cell>
+        </ng-container>
+
+
+
+        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+        <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+    </mat-table>
+
+
+  </div>
+
+  <div class="abc-center" *ngIf="(isLoading$ | async)">
+    <mat-spinner [diameter]="60" ></mat-spinner>
+  </div>
+</div>

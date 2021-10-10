@@ -1,0 +1,28 @@
+$primary: mat-palette($mat-blue, 800, 500, 900);
+$accent:  mat-palette($mat-blue, A200, A100, A400);
+$warn: mat-palette($mat-red);
+
+$color-white: #fff;
+$color-grey-1: #eee;
+:root {
+  --color-grey-1: #eee;
+  --line: 1px solid #eee;
+  --shadow: 0 .2rem .3rem rgba(#000, .1);
+}
+$color-black-rgb: #000;
+
+$theme: mat-light-theme($primary, $accent, $warn);
+
+// Custom colors
+$custom-colors: (
+  green-color: mat-color($mat-green, 400),
+  blue-color: mat-color($mat-blue, 400),
+  danger-color: mat-color($mat-red, 400),
+  primary-color: mat-color($mat-indigo, 400),
+  warn-color: mat-color($mat-amber, 400)
+  );
+$theme: map-merge($theme, (custom-colors: $custom-colors));
+
+@function getColor($typeColor) {
+  @return map-get($custom-colors,$typeColor)
+}

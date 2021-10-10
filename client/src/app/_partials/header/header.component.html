@@ -1,0 +1,9 @@
+<mat-toolbar color="primary">
+  <span>Ticketing App</span>
+  <span class="spacer"></span>
+  
+  <ng-container *ngIf="list.length">
+    <button mat-button *ngFor="let li of list" (click)="li.action()">{{li.title}}</button>
+  </ng-container>
+  
+</mat-toolbar>

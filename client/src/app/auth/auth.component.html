@@ -1,0 +1,65 @@
+<section class="loginSection" >
+
+
+  <div class="form-section">
+      <form #f="ngForm" (ngSubmit)="signin(f)">
+
+        <mat-card class="login-card">
+
+          <mat-card-header>
+            <mat-card-title>Sign To Start Your Session</mat-card-title>
+          </mat-card-header>
+
+          <mat-card-content>
+               <!-- emaild field -->
+               <div class="emaild-field">
+                 <mat-form-field  appearance="outline">
+                   <mat-label>.Email Address</mat-label>
+                   <input matInput placeholder="Please Enter Email Address"
+                     name="email" #email="ngModel" ngModel required >
+                   <mat-error *ngIf="email.invalid">Must Field Contain Valid Email
+                   </mat-error>
+                 </mat-form-field>
+               </div>
+
+               <!-- end email field-->
+
+               <!-- start password field-->
+               <div class="password-field">
+                 <mat-form-field  appearance="outline">
+                   <mat-label>Passowrd</mat-label>
+                   <input matInput name="password" placeholder="Enter Your Password" [type]="hide ? 'password' : 'text'" ngModel
+                     #password="ngModel" required minlength="6" #field2>
+                     <mat-hint align="end">{{ password.value?.length }} / 6</mat-hint>
+                     <mat-error *ngIf="password.hasError('required')">Must Password Field Not Be Empty</mat-error>
+
+                   <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
+                     [attr.aria-pressed]="hide">
+                     <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                   </button>
+
+                   
+                 </mat-form-field>
+               </div>
+               <!-- end password field -->
+          </mat-card-content>
+
+          <mat-card-actions  fxLayoutAlign="center center">
+              <button mat-raised-button type="submit" color="primary" [disabled]="f.invalid" *ngIf="!(isLoading$ | async)">
+                  <mat-icon>login</mat-icon>
+                  Login
+              </button>
+
+              <mat-spinner *ngIf="isLoading$ | async" [diameter]="40"></mat-spinner>
+          </mat-card-actions>
+
+        </mat-card>
+
+
+
+      </form>
+ 
+
+</div>
+
+</section>

@@ -1,0 +1,26 @@
+<div class="movies">
+
+  <div class="movies__list" *ngIf="!(isLoading$ | async)">
+    <mat-card *ngFor="let movie of movies" class="movies__item">
+      <mat-card-title class="movies__header">{{movie.movie_name}}</mat-card-title>
+
+      <div class="movies__subheader">
+        <mat-card-subtitle>{{movie.movie_duration}}min</mat-card-subtitle>
+        <span>&nbsp;-&nbsp;</span>
+        <mat-card-subtitle>{{movie.release_date}}</mat-card-subtitle>
+      </div>
+      <mat-card-content>
+        <p>
+         {{movie.movie_description}}
+        </p>
+      </mat-card-content>
+      <mat-card-actions class="movies__actions">
+        <a mat-button color="primary" [routerLink]="['/', 'show-times', movie.id]">show times</a>
+      </mat-card-actions>
+    </mat-card>
+  </div>
+
+  <div class="abc-center" *ngIf="(isLoading$ | async)">
+    <mat-spinner [diameter]="60" ></mat-spinner>
+  </div>
+</div>

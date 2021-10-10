@@ -1,0 +1,64 @@
+version: '3'
+services:
+  db:
+    # image: 'mysql'
+    build:
+      context: ./mysql
+      dockerfile: Dockerfile.dev
+
+    restart: always
+    #to save and prevent to losing data after restart
+    volumes:
+      - dbdata:/var/lib/mysql
+    environment:
+      MYSQL_DATABASE: laravel
+      MYSQL_ROOT_PASSWORD: root
+
+    ports:
+      - "3306:3306"
+  redis:
+    image: 'redis:latest'
+  nginx:
+    build:
+      context: ./nginx
+      dockerfile: Dockerfile.dev
+    restart: always
+    ports:
+      - "3050:80"
+    depends_on:
+      - api
+  adminer:
+    depends_on:
+      - db
+    image: adminer
+    restart: always
+    ports:
+      - 8080:8080
+  api:
+    build:
+      context: ./api
+      dockerfile: Dockerfile.dev
+      args:
+        - PHPUSER=${PHPUSER:-www-data}
+        - PHPGROUP=${PHPGROUP:-www-data}
+    ports:
+      - "80:80"
+      - "8000:8000"
+  client:
+    build:
+      context: ./client
+      dockerfile: Dockerfile
+    volumes:
+      - /app/node_modules
+      - ./client:/app
+  worker:
+    build:
+      context: ./api
+      dockerfile: Dockerfile.dev
+    command: ["php", "artisan", "queue:work"]
+    restart: always
+
+  
+volumes:
+  dbdata:
+    driver: local
