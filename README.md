@@ -15,7 +15,7 @@ Bringing up the Docker Compose network with site instead of just using up, ensur
 - **client** - `:3000` 
 
 
-migrate database of app to your database
+migrate database of app t
 ```sh
 docker-compose exec api php artisan migrate
 ```
