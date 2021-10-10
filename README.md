@@ -67,7 +67,7 @@ Show Times
 * [x] Update
 * [x] Delete
 * [x] Show
-- Get show times of movie based on movie id
+* [x] Get show times of movie based on movie id
 
 
 ## Tests:
