@@ -102,9 +102,9 @@ Show Times
 * [x] Using redux to handle the data flow within a component and reduce the complexity gf the application
 * [x] Using HTTP_INTERCEPTOR to inject authorization http headers to every http request 
 * [x] Using angular material 
-* 	[x]Login page to start session
-* 	[x]Show all movies
-* 	[x]Show times of movie based on movie id
-* 	[x]Select your seats and booking
+* 	[x] Login page to start session
+* 	[x] Show all movies
+* 	[x] Show times of movie based on movie id
+* 	[x] Select your seats and booking
 
 
