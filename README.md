@@ -28,3 +28,6 @@ docker-compose exec api php artisan db:seed
 
 You can access your application via localhost, if you're running the containers directly
 [link] (http://localhost:3050)
+
+## API Collection of ticketing app on postman
+[ticketing app collection](https://documenter.getpostman.com/view/3000372/UV5RkfH7)
