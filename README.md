@@ -27,8 +27,8 @@ docker-compose exec api php artisan db:seed
 
 *** NOW you can login ***
 ### Account information
-email: user@null.com
-password: password
+* email: user@null.com
+* password: password
 
 
 You can access your application via localhost, if you're running the containers directly
