@@ -46,28 +46,28 @@ You can access your application via localhost, if you're running the containers 
 * [x] Login
 * [x] Me
 * [x] Logout
-Movies
+## Movies
 * [x] Create
 * [x] Update
 * [x] Delete
 * [x] Show
-Halls
+## Halls
 * [x] Create
 * [x] Update
 * [x] Delete
 * [x] Show
-Seats
+## Seats
 * [x] Create
 * [x] Update
 * [x] Delete
 * [x] Show
 * [x] Get Seats with filter if available OR reseved
-Reservations
+## Reservations
 * [x] Create
 * [x] Update
 * [x] Delete
 * [x] Show
-Show Times
+## Show Times
 * [x] Create
 * [x] Update
 * [x] Delete
